@@ -11,12 +11,14 @@ import {
   NavbarButton,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import Link from 'next/link';
 
 export default function Home() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { name: "Home", link: "/" },
+    { name: "About Us", link: "/aboutus" },
     { name: "Services", link: "/services" },
     { name: "Projects", link: "/projects" },
     { name: "Contact", link: "/contact" },
@@ -36,7 +38,7 @@ export default function Home() {
             <div className="flex-1 flex justify-center">
               <NavItems
                 items={navItems}
-                onItemClick={() => {}}
+                onItemClick={() => { }}
                 className="flex gap-10 text-lg font-semibold text-zinc-700 dark:text-zinc-200 tracking-wide font-[Inter,sans-serif]"
               />
             </div>
