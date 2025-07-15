@@ -34,9 +34,9 @@ export default function Home() {
       {/* ✅ Main Content */}
       <Navbar className="relative z-10 font-[Inter,sans-serif]">
         <>
-          <NavBody>
+          {/* <NavBody>
             <div className="hidden lg:flex w-full h-full items-center justify-between">
-              <div className="flex items-center flex-shrink-0">
+              <div className="flex items-left flex-shrink-0">
                 <NavbarLogo />
               </div>
               <div className="flex-1 flex justify-center">
@@ -46,24 +46,35 @@ export default function Home() {
                   className="flex gap-10 text-lg font-semibold text-zinc-100 tracking-wide font-[Inter,sans-serif]"
                 />
               </div>
-              <div className="flex items-center gap-2 flex-shrink-0">
-                <NavbarButton
-                  href="/login"
-                  variant="secondary"
-                  className="mr-2"
-                >
-                  Login
-                </NavbarButton>
-                <NavbarButton
-                  href="/book"
-                  variant="primary"
-                  className="shadow font-semibold"
-                >
-                  Book a call
-                </NavbarButton>
-              </div>
+              
             </div>
-          </NavBody>
+          </NavBody> */}
+
+          <NavBody>
+  <div className="hidden lg:flex w-full h-full items-center justify-between px-6">
+    
+    {/* Logo aligned left */}
+    <div className="flex items-center">
+      <NavbarLogo />
+    </div>
+
+    {/* Nav items centered */}
+    <div className="flex-1 flex justify-center">
+      <NavItems
+        items={navItems}
+        onItemClick={() => {}}
+        className="flex gap-12 text-lg font-semibold text-zinc-100 tracking-wide font-sans" // change font here
+      />
+    </div>
+
+    {/* Optional: Add a right-aligned element if needed */}
+    {/* <div className="flex items-center">
+      <SomeComponent />
+    </div> */}
+    
+  </div>
+</NavBody>
+
 
           {!isMobileMenuOpen && (
             <div className="flex lg:hidden items-center justify-between w-full px-3 py-2 bg-white/90 dark:bg-black/90 shadow rounded-2xl mt-4 mx-auto max-w-[98vw]">

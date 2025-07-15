@@ -46,13 +46,12 @@ export const Navbar = ({ children, className }: { children: React.ReactNode; cla
 export const NavBody = ({ children, className, visible }: any) => (
   <motion.div
     animate={{
-      backdropFilter: visible ? "blur(8px)" : "none",
       y: visible ? 10 : 0,
     }}
     transition={{ type: "spring", stiffness: 200, damping: 30 }}
     className={cn(
       // pill nav, center content, height
-      "hidden lg:flex w-full h-full items-center justify-between px-6",
+      "hidden lg:flex w-full h-full items-center justify-start px-6", // changed justify-between to justify-start
       className
     )}
   >
@@ -103,7 +102,7 @@ export const NavItems = ({ items, className, onItemClick }: any) => {
 export const MobileNav = ({ children, visible }: { children: React.ReactNode; visible?: boolean }) => (
   <motion.div
     animate={{
-      backdropFilter: visible ? "blur(6px)" : "none",
+      
       y: visible ? 10 : 0,
     }}
     transition={{ type: "spring", stiffness: 200, damping: 40 }}
@@ -141,11 +140,9 @@ export const MobileNavToggle = ({ isOpen, onClick }: { isOpen: boolean; onClick:
   );
 
 // Logo
-export const NavbarLogo = () => (
+export const NavbarLogo = ({ logoClassName = "w-[48px] h-[48px]" }: { logoClassName?: string }) => (
   <a href="/" className="flex items-center px-0 py-0">
-    {/* Use a smaller logo for pill nav */}
-    <img src="/logo.jpg" alt="logo" className="w-[48px] h-[48px] object-contain rounded-full" />
-    <span className="ml-2 font-bold text-xl text-black dark:text-white">Startup</span>
+    <img src="/logo.jpg" alt="logo" className={cn(logoClassName, "object-contain rounded-full")} />
   </a>
 );
 
@@ -183,3 +180,4 @@ export const NavbarButton = ({
     </Tag>
   );
 };
+
