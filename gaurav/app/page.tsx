@@ -11,17 +11,20 @@ import {
   NavbarButton,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import AboutUs from "@/components/ui/aboutus";
 
 export default function Home() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { name: "Home", link: "/" },
-    { name: "About Us", link: "/aboutus" },
     { name: "Services", link: "/services" },
     { name: "Projects", link: "/projects" },
     { name: "Contact", link: "/contact" },
   ];
+
+
+  // Removed AboutUsPage default export, as only one default export is allowed per file.
 
   return (
     <Navbar className="font-[Inter,sans-serif]">
@@ -61,8 +64,9 @@ export default function Home() {
           </div>
         </NavBody>
 
+        {/* Mobile Header (Logo + Hamburger) */}
         {!isMobileMenuOpen && (
-          <div className="flex lg:hidden items-center justify-between w-full px-3 py-2 bg-white/90 dark:bg-black/90 shadow rounded-2xl mt-4 mx-auto max-w-[98vw]">
+          <div className="flex lg:hidden items-center justify-between w-full px-3 py-2 bg-white/95 dark:bg-black/95 shadow rounded-2xl mt-4 mx-auto max-w-[98vw]">
             <NavbarLogo />
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
@@ -71,31 +75,36 @@ export default function Home() {
           </div>
         )}
 
+        {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <MobileNav visible={isMobileMenuOpen}>
             <MobileNavMenu
               isOpen={isMobileMenuOpen}
               onClose={() => setMobileMenuOpen(false)}
-              className="flex flex-col items-center justify-center gap-6 w-[92vw] max-w-xs h-auto bg-white/90 dark:bg-neutral-950 px-4 py-8 relative rounded-2xl mx-auto mt-8 shadow-xl border border-gray-200 dark:border-neutral-800"
+              className="flex flex-col items-center justify-center gap-6 w-[92vw] max-w-xs h-auto bg-white dark:bg-neutral-950 px-4 py-8 relative rounded-2xl mx-auto mt-8 shadow-xl border border-gray-200 dark:border-neutral-800"
             >
+              {/* Close Icon */}
               <div className="absolute top-3 right-3 z-50">
                 <MobileNavToggle
                   isOpen={isMobileMenuOpen}
                   onClick={() => setMobileMenuOpen(false)}
                 />
               </div>
+              {/* Logo - smaller and with margin */}
               <div className="mb-3 mt-1">
                 <NavbarLogo />
               </div>
+              {/* Navigation Items */}
               <NavItems
                 items={navItems}
                 onItemClick={() => setMobileMenuOpen(false)}
-                className="flex flex-col gap-5 text-lg font-semibold items-center text-zinc-800 dark:text-zinc-200 tracking-wide font-[Inter,sans-serif]"
+                className="flex flex-col gap-5 text-lg font-semibold items-center text-zinc-700 dark:text-zinc-200 tracking-wide font-[Inter,sans-serif]"
               />
             </MobileNavMenu>
           </MobileNav>
         )}
 
+        {/* Overlay when menu is open */}
         {isMobileMenuOpen && (
           <div
             className="fixed inset-0 z-40 bg-black/20 lg:hidden"
@@ -107,6 +116,7 @@ export default function Home() {
         )}
       </>
     </Navbar>
-    </div >
   );
 }
+
+
